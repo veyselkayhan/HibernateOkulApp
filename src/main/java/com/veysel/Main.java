@@ -56,12 +56,12 @@ public class Main {
                 .kisiselBilgiler(kisiselBilgiler)
                 .build();
 
-//        session.save(ogretmen);
-//        session.save(ogrenci);
+        session.save(ogretmen);
+        session.save(ogrenci);
 
         Sinif sinif= Sinif.builder()
                 .sinifAdi("MF")
-                .ogretmenId(1L)
+                .ogretmenId(ogretmen.getId())
                 .ogrenciler(Arrays.asList(ogrenci.getKisiselBilgiler().getIsim()))
                 .build();
 
