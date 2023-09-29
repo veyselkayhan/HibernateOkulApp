@@ -2,15 +2,15 @@ package com.veysel.enums;
 
 public enum EBrans {
 
-    Matematik,
+    MATEMATIK,
 
-    Fizik,
+    FIZIK,
 
-    Kimya,
+    KIMYA,
 
-    Biyoloji,
+    BİYOLOJI,
 
-    Edebiyat,
+    EDEBIYAT
 
 
 

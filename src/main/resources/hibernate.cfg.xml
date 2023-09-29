@@ -28,6 +28,7 @@
                 @Entity ile işaretlenmemiş hiç bir sınıfı kullanamaz.
         -->
         <mapping class="com.veysel.repository.entity.Ogretmen"></mapping>
+        <mapping class="com.veysel.repository.entity.Ogrenci"></mapping>
 
 
 
