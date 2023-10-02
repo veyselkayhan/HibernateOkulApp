@@ -1,8 +1,12 @@
 package com.veysel.util;
 
 import com.veysel.controller.OgrenciController;
+import com.veysel.controller.OgretmenController;
+import com.veysel.controller.SinifController;
+import com.veysel.enums.EBrans;
 import com.veysel.repository.entity.KisiselBilgiler;
 import com.veysel.repository.entity.Ogrenci;
+import com.veysel.repository.entity.Ogretmen;
 import com.veysel.repository.entity.Sinif;
 
 import java.time.LocalDate;
@@ -10,9 +14,14 @@ import java.util.Arrays;
 
 public class DataGenerator {
     OgrenciController ogrenciController;
+    OgretmenController ogretmenController;
+
+    SinifController sinifController;
 
     public DataGenerator(){
         this.ogrenciController = new OgrenciController();
+        this.ogretmenController=new OgretmenController();
+        this.sinifController=new SinifController();
     }
 
     public void ogrenciOlustur(){
@@ -121,7 +130,16 @@ public class DataGenerator {
     }
 
     public void ogretmenOlustur(){
-
+        Ogretmen ogretmen= Ogretmen.builder()
+                .brans(EBrans.MATEMATIK)
+                .kisiselBilgiler(KisiselBilgiler.builder()
+                        .isim("Ömer")
+                        .soyisim("Söylemez")
+                        .tcKimlik("47896321")
+                        .build())
+                .iseBaslama(LocalDate.of(2008,5,26))
+                .build();
+        ogretmenController.save(ogretmen);
     }
 
     public void sinifOlustur(){

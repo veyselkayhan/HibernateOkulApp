@@ -122,7 +122,9 @@ public class Main {
         // ogretmenController.save(ogretmen1);
 
         DataGenerator dataGenerator = new DataGenerator();
-        dataGenerator.ogrenciOlustur();
+//        dataGenerator.ogrenciOlustur();
+        dataGenerator.ogretmenOlustur();
+
 
 
 
