@@ -11,57 +11,53 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Optional;
 
-public class MyFactoryRepository <T,ID> implements ICrud<T,ID> {
+public class MyFactoryRepository <T> implements ICrud<T> {
 
     private Session session;
-
     private Transaction transaction;
-
-    private CriteriaBuilder criteriaBuilder;
-
-    private EntityManager entityManager;
-
+    //    EntityManager entityManager = HibernateUtility.getSessionFactory().createEntityManager();
+//    CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
     T t;
-    public MyFactoryRepository(T entity) {
-        entityManager=HibernateUtility.getSessionFactory().createEntityManager();
-        criteriaBuilder=entityManager.getCriteriaBuilder();
-        this.t=entity;
-    }
 
+    public MyFactoryRepository(T entity){
+        this.t = entity;
+    }
     private void openSession(){
-        session=HibernateUtility.getSessionFactory().openSession();
-        transaction=session.beginTransaction();
+        session = HibernateUtility.getSessionFactory().openSession();
+        transaction = session.beginTransaction();
     }
-
     private void closeSession(){
         transaction.commit();
         session.close();
     }
 
+
     @Override
-    public List<T> findAll() {
-        CriteriaQuery<T>criteria=(CriteriaQuery<T>) criteriaBuilder.createQuery(t.getClass());
-        Root<T>root=(Root<T>) criteria.from(t.getClass());
-        criteria.select(root);
-        List<T>findAll=entityManager.createQuery(criteria).getResultList();
-        findAll.forEach(System.out::println);
-        return findAll;
+    public T save(T entity) {
+        openSession();
+        session.save(entity);
+        closeSession();
+        return entity;
     }
 
     @Override
-    public Optional<T> findById(ID id) {
-        CriteriaQuery<T> criteriaQuery = (CriteriaQuery<T>) criteriaBuilder.createQuery(t.getClass());
-        Root<T> root = (Root<T>) criteriaQuery.from(t.getClass());
-        criteriaQuery.select(root);
-        criteriaQuery.where(criteriaBuilder.equal(root.get("id"), id));
-        try {
-            T  findId= entityManager.createQuery(criteriaQuery).getSingleResult();
-            return Optional.ofNullable(findId);
-        } catch (NullPointerException e) {
-            return Optional.empty();
-        }
+    public void update(T entity) {
+        openSession();
+        session.update(entity);
+        session.close();
     }
+
+    @Override
+    public List<T> findAll() {
+        return null;
     }
+
+    @Override
+    public Optional<T> findById(Long id) {
+        return null;
+    }
+
+}
 
 
 
