@@ -11,7 +11,7 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Optional;
 
-public class SinifRepository extends MyFactoryRepository<Sinif> {
+public class SinifRepository extends MyFactoryRepository<Sinif,Long> {
 
     EntityManager entityManager = HibernateUtility.getSessionFactory().createEntityManager();
     CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
