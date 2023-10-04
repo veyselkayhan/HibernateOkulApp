@@ -14,6 +14,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "tbl_ogrenci")
+@NamedQueries({
+        @NamedQuery(name = "Ogrenci.findAllByIsım",query = "SELECT o.kisiselBilgiler.isim FROM Ogrenci o")
+})
+
 public class Ogrenci  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

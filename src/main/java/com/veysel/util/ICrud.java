@@ -12,6 +12,7 @@ public interface ICrud <T,ID>{
     //verdiğim müşteri or urun vb entityi kaydet bana onu geri dön
 
     void delete(T entity);
+    void update(T entity);
 
     void deleteById(ID id);
 

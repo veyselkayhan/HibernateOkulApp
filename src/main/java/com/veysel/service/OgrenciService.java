@@ -30,4 +30,28 @@ public class OgrenciService {
     public Optional<Ogrenci> findById(Long id){
         return ogrenciRepository.findById(id);
     }
+
+    public List<Ogrenci> saveAll(List<Ogrenci> ogrenciList){
+        return (List<Ogrenci>) ogrenciRepository.saveAll(ogrenciList);
+    }
+
+    public void delete(Ogrenci ogrenci){
+        ogrenciRepository.delete(ogrenci);
+    }
+
+    public void deleteById(Long id){
+        ogrenciRepository.deleteById(id);
+    }
+
+    public boolean existById(Long id){
+        return ogrenciRepository.existById(id);
+    }
+    public List<Ogrenci> findByEntity(Ogrenci ogrenci){
+        return ogrenciRepository.findByEntity(ogrenci);
+    }
+
+    public List<Ogrenci> findByColumnNameAndValue(String columnName, String columnValue){
+        return ogrenciRepository.findByColumnNameAndValue(columnName,columnValue);
+    }
+
 }

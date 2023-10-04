@@ -1,5 +1,6 @@
 package com.veysel;
 
+import com.veysel.Queries.*;
 import com.veysel.controller.OgrenciController;
 import com.veysel.controller.OgretmenController;
 
@@ -13,6 +14,7 @@ import com.veysel.service.OgrenciService;
 import com.veysel.util.DataGenerator;
 import com.veysel.util.HibernateUtility;
 import com.veysel.util.MyFactoryRepository;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -103,30 +105,44 @@ public class Main {
 //
 //        System.out.println("**********************");
 
-        OgrenciService ogrenciService;
-
-        KisiselBilgiler kisiselBilgiler= KisiselBilgiler.builder()
-                .tcKimlik("465465465")
-                .isim("Abuzer")
-                .soyisim("Komurcu")
-                .build();
-
-        Ogretmen ogretmen1=Ogretmen.builder()
-                .kisiselBilgiler(kisiselBilgiler)
-                .brans(EBrans.KIMYA)
-                .iseBaslama(LocalDate.of(2002,4,12))
-                .build();
-        
-        OgretmenController ogretmenController = new OgretmenController();
-        
-        // ogretmenController.save(ogretmen1);
-
-        DataGenerator dataGenerator = new DataGenerator();
-//        dataGenerator.ogrenciOlustur();
-        dataGenerator.ogretmenOlustur();
-
+//        OgrenciService ogrenciService;
+//
+//        KisiselBilgiler kisiselBilgiler= KisiselBilgiler.builder()
+//                .tcKimlik("465465465")
+//                .isim("Abuzer")
+//                .soyisim("Komurcu")
+//                .build();
+//
+//        Ogretmen ogretmen1=Ogretmen.builder()
+//                .kisiselBilgiler(kisiselBilgiler)
+//                .brans(EBrans.KIMYA)
+//                .iseBaslama(LocalDate.of(2002,4,12))
+//                .build();
+//
+//        OgretmenController ogretmenController = new OgretmenController();
+//
+//        // ogretmenController.save(ogretmen1);
+//
+//        DataGenerator dataGenerator = new DataGenerator();
+//        dataGenerator.sinifOlustur(dataGenerator.ogrenciOlustur(),dataGenerator.ogretmenOlustur());
 
 
+        CriteriaSorgulari cr= new CriteriaSorgulari();
+//        cr.findAllStudentsByName().forEach(System.out::println);
+
+        NamedQueries namedQueries= new NamedQueries();
+//        namedQueries.findAllStudentsByName().forEach(System.out::println);
+
+        HqlSorgulari hqlSorgulari= new HqlSorgulari();
+
+//        hqlSorgulari.findAllStudentsByName().forEach(System.out::println);
+
+        JpglSorgulari jpglSorgulari = new JpglSorgulari();
+//        jpglSorgulari.findAllStudentsByName().forEach(System.out::println);
+
+        NativeQuery nativeQuery= new NativeQuery();
+        nativeQuery.findAllStudentsByName().forEach(System.out::println);
 
     }
+
 }

@@ -21,8 +21,8 @@
         <!--  Hibernate bizim adımıza SQL komutlarını yazmaktadır, bu yazmakta olduğu SQL kodlarını
               konsol ekranında görebilmek için bunu aktif ederiz.
         -->
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">false</property>
         <!--    Hibernate in haritalayacağı tüm Java Sınıflarını belirtiyoruz.
                 DİKKAT!! kafanıza göre her sınıfı haritalayamazsınız. çünkü hibernate
                 @Entity ile işaretlenmemiş hiç bir sınıfı kullanamaz.
@@ -30,6 +30,10 @@
         <mapping class="com.veysel.repository.entity.Ogretmen"></mapping>
         <mapping class="com.veysel.repository.entity.Ogrenci"></mapping>
         <mapping class="com.veysel.repository.entity.Sinif"></mapping>
+        <mapping class="com.veysel.repository.entity.Sinif"></mapping>
+        <mapping class="com.veysel.Views.VwOgrenci"></mapping>
+
+
 
 
 

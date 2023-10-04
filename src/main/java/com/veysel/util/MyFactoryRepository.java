@@ -38,6 +38,12 @@ public class MyFactoryRepository <T,ID> implements ICrud<T,ID> {
         transaction.commit();
         session.close();
     }
+    @Override
+    public void update(T entity) {
+        openSession();
+        session.update(entity);
+        closeSession();
+    }
 
     @Override
     public T save(T entity) {
